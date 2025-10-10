@@ -5,27 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="keywords" content="web, developer, resume" />
-
-    <meta name="keywords" content="web, developer, resume" />
     <meta name="author" content="John Doe" />
     <title>John Doe - Resume</title>
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
   </head>
+
   <body>
     <div id="wrapper">
-      <header>
-        <h1 class="navbar">
+      <!-- Add Person microdata -->
+      <header itemscope itemtype="https://schema.org/Person">
+        <h1 class="navbar" itemprop="name">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"
             height="50"
             viewBox="0 0 640 640"
           >
-            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-            <path
-              d="M112 256C112 167.6 183.6 96 272 96C319.1 96 361.4 116.4 390.7 148.7C401.3 145.6 412.5 144 424 144C490.3 144 544 197.7 544 264C544 277.2 541.9 289.9 537.9 301.8C579.5 322.9 608 366.1 608 416C608 486.7 550.7 544 480 544L176 544C96.5 544 32 479.5 32 400C32 343.2 64.9 294.1 112.7 270.6C112.3 265.8 112 260.9 112 256zM272 144C210.1 144 160 194.1 160 256C160 264.4 160.9 272.6 162.7 280.5C165.4 292.6 158.4 304.8 146.6 308.6C107.9 321 80 357.3 80 400C80 453 123 496 176 496L480 496C524.2 496 560 460.2 560 416C560 378.6 534.3 347.1 499.5 338.4C492 336.5 485.9 331.2 483 324.1C480.1 317 480.9 308.9 485 302.4C492 291.3 496 278.2 496 264.1C496 224.3 463.8 192.1 424 192.1C412.9 192.1 402.5 194.6 393.2 199C382.7 204 370.1 200.7 363.4 191.2C343.1 162.6 309.7 144.1 272.1 144.1z"
-            />
+            <path d="..." />
           </svg>
           John Doe
           <svg
@@ -34,34 +31,64 @@
             height="50"
             viewBox="0 0 640 640"
           >
-            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-            <path
-              d="M112 256C112 167.6 183.6 96 272 96C319.1 96 361.4 116.4 390.7 148.7C401.3 145.6 412.5 144 424 144C490.3 144 544 197.7 544 264C544 277.2 541.9 289.9 537.9 301.8C579.5 322.9 608 366.1 608 416C608 486.7 550.7 544 480 544L176 544C96.5 544 32 479.5 32 400C32 343.2 64.9 294.1 112.7 270.6C112.3 265.8 112 260.9 112 256zM272 144C210.1 144 160 194.1 160 256C160 264.4 160.9 272.6 162.7 280.5C165.4 292.6 158.4 304.8 146.6 308.6C107.9 321 80 357.3 80 400C80 453 123 496 176 496L480 496C524.2 496 560 460.2 560 416C560 378.6 534.3 347.1 499.5 338.4C492 336.5 485.9 331.2 483 324.1C480.1 317 480.9 308.9 485 302.4C492 291.3 496 278.2 496 264.1C496 224.3 463.8 192.1 424 192.1C412.9 192.1 402.5 194.6 393.2 199C382.7 204 370.1 200.7 363.4 191.2C343.1 162.6 309.7 144.1 272.1 144.1z"
-            />
+            <path d="..." />
           </svg>
         </h1>
-        <h2>Chemistry Professor</h2>
-        <i class="fa-regular fa-truck"></i>
-        <img src="assets/john-doe.jpg" alt="John Doe picture" />
+
+        <h2 itemprop="jobTitle">Chemistry Professor</h2>
+
+        <!-- Profile picture -->
+        <img
+          src="assets/john-doe.jpg"
+          alt="John Doe picture"
+          itemprop="image"
+        />
 
         <div>
           <p><strong>Personal Information:</strong></p>
           <ul>
-            <li>Name: John Doe</li>
-
-            <li>Email: johndoe@cia.sf.com</li>
+            <li>Name: <span itemprop="name">John Doe</span></li>
+            <li>
+              Email:
+              <a href="mailto:johndoe@cia.sf.com" itemprop="email">
+                johndoe@cia.sf.com
+              </a>
+            </li>
             <li>Age: 26 years old</li>
-            <li>Birth Date: 2 October 1949</li>
-            <li>Address: 19th Avenue, San Francisco, United States</li>
+            <li>
+              Birth Date:
+              <time itemprop="birthDate" datetime="1949-10-02"
+                >2 October 1949</time
+              >
+            </li>
+            <li
+              itemprop="address"
+              itemscope
+              itemtype="https://schema.org/PostalAddress"
+            >
+              Address:
+              <span itemprop="streetAddress">19th Avenue</span>,
+              <span itemprop="addressLocality">San Francisco</span>,
+              <span itemprop="addressRegion">CA</span>,
+              <span itemprop="addressCountry">United States</span>
+            </li>
             <li>
               LinkedIn:
-              <a href="https://www.linkedin.com/in/johndoe" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/johndoe"
+                target="_blank"
+                itemprop="sameAs"
+              >
                 linkedin.com/in/johndoe
               </a>
             </li>
             <li>
               Flickr:
-              <a href="https://www.flickr.com/photos/johndoe" target="_blank">
+              <a
+                href="https://www.flickr.com/photos/johndoe"
+                target="_blank"
+                itemprop="sameAs"
+              >
                 flickr.com/photos/johndoe
               </a>
             </li>
@@ -70,7 +97,6 @@
       </header>
 
       <main>
-        <!-- Presentation Section -->
         <section>
           <h3>Presentation</h3>
           <p>
@@ -81,7 +107,6 @@
           </p>
         </section>
 
-        <!-- Formation Section -->
         <section>
           <h3>Formation</h3>
           <ul>
@@ -90,6 +115,7 @@
             <li>BSc in Chemistry – UC Berkeley, 1970</li>
           </ul>
         </section>
+
         <section>
           <h3>Skills</h3>
           <ul>
@@ -101,7 +127,7 @@
             <li>Basic HTML/CSS for academic presentations</li>
           </ul>
         </section>
-        <!-- Languages and Hobbies Section -->
+
         <section>
           <h3>Languages & Hobbies</h3>
           <ul>
@@ -124,16 +150,25 @@
           </ul>
         </section>
       </main>
+
       <footer>
         <ul>
           <li>
-            <a href="https://www.linkedin.com/in/johndoe" target="_blank">
-              linkedin</a
+            <a
+              href="https://www.linkedin.com/in/johndoe"
+              target="_blank"
+              itemprop="sameAs"
             >
+              LinkedIn
+            </a>
           </li>
           <li>
-            <a href="https://www.flickr.com/photos/johndoe" target="_blank">
-              FLicker
+            <a
+              href="https://www.flickr.com/photos/johndoe"
+              target="_blank"
+              itemprop="sameAs"
+            >
+              Flickr
             </a>
           </li>
         </ul>
