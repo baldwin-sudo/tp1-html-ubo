@@ -87,3 +87,11 @@ li a:hover {
   border-radius: 3px;
   color: black;
 }
+.formation-item div {
+  overflow: hidden;
+  height: 0px;
+  transition: height 0.3s ease;
+}
+.active-description {
+  display: block !important;
+}
