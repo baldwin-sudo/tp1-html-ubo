@@ -95,3 +95,14 @@ li a:hover {
 .active-description {
   display: block !important;
 }
+.skills-list li p {
+  font-weight: bold;
+  color: black;
+  position: relative;
+}
+.skills-list li p:hover {
+  background-color: lightcoral;
+}
+.active-skill-description {
+  background-color: purple;
+}

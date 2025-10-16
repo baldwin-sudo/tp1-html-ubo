@@ -27,4 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  const skills_paragraphs = document.querySelectorAll(".skills-list li");
+  skills_paragraphs.forEach((p) => {
+    p.classList.add("skills-p");
+    p.addEventListener("click", function () {
+      const curr_desc = [
+        ...p.parentElement.querySelectorAll(".skill-description"),
+      ][0];
+      curr_desc.classList.add("active-skill-description");
+    });
+  });
 });
