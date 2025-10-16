@@ -92,17 +92,41 @@ li a:hover {
   height: 0px;
   transition: height 0.3s ease;
 }
-.active-description {
-  display: block !important;
-}
-.skills-list li p {
+
+.skills-list li button {
   font-weight: bold;
   color: black;
+  width: 100px;
   position: relative;
 }
-.skills-list li p:hover {
+.skills-list li button:focus {
+  color: red;
+}
+.skills-list li button:hover {
   background-color: lightcoral;
 }
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.skills-list li {
+  width: fit-content;
+  position: relative;
+}
+.skill-description {
+  position: absolute;
+  display: none;
+  text-wrap-mode: nowrap;
+  z-index: 10;
+  left: 100%;
+  top: 0;
+
+  /* transform: translateX(100%); */
+}
 .active-skill-description {
-  background-color: purple;
+  background-color: rgb(228, 157, 228);
+  display: block;
+
+  border: 1px solid black;
 }
