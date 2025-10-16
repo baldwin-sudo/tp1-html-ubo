@@ -1,19 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
+// this was done solo , but i used ai to refactor code hence the structure .
+document.addEventListener("DOMContentLoaded", async function () {
+  let skillsData = { skills: [] };
+
+  try {
+    const response = await fetch("data.json");
+    if (!response.ok) throw new Error("Failed to load data.json");
+    skillsData = await response.json();
+  } catch (error) {
+    console.error("Error loading JSON:", error);
+  }
+
   const formationButtons = document.querySelectorAll(".formation-item button");
 
   formationButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const isActive = button.classList.contains("active");
 
-      // Remove active class from all buttons and their descriptions
       formationButtons.forEach((btn) => {
         btn.classList.remove("active");
         const description = btn.parentElement.querySelector("div");
         description.classList.remove("active-description");
-        description.style.height = "0px"; // Collapse the description
+        description.style.height = "0px";
       });
 
-      // If not already active, activate this button and its description
       if (!isActive) {
         button.classList.add("active");
         const description = button.parentElement.querySelector("div");
@@ -23,26 +32,52 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  const skillList = document.querySelector(".skills-list");
+  skillList.innerHTML = "";
+
+  skillsData.skills.forEach((skill) => {
+    const li = document.createElement("li");
+
+    const button = document.createElement("button");
+    button.textContent =
+      skill.name.charAt(0).toUpperCase() + skill.name.slice(1);
+    button.classList.add("skills-p");
+
+    // Add level indicator stars
+    const levelIndicator =
+      "★".repeat(skill.level) + "☆".repeat(5 - skill.level);
+    const levelInfo = document.createElement("span");
+    levelInfo.textContent = ` (${levelIndicator})`;
+    levelInfo.style.fontSize = "0.9em";
+    levelInfo.style.opacity = "0.8";
+    button.appendChild(levelInfo);
+
+    // Description
+    const description = document.createElement("div");
+    description.classList.add("skill-description");
+    description.textContent = skill.description || "No description available.";
+
+    li.appendChild(button);
+    li.appendChild(description);
+    skillList.appendChild(li);
+  });
+
   const skillListItems = document.querySelectorAll(".skills-list li");
 
   skillListItems.forEach((listItem) => {
     const skillButton = listItem.querySelector("button");
     const skillDescription = listItem.querySelector(".skill-description");
 
-    skillButton.classList.add("skills-p");
-
-    let inside = false; // Track if mouse is inside
+    let inside = false;
     let parentRect = listItem.getBoundingClientRect();
 
     function showDescription(event) {
-      // Hide all other descriptions
       document.querySelectorAll(".skill-description").forEach((desc) => {
         desc.classList.remove("active-skill-description");
       });
 
       skillDescription.style.left = event.clientX - parentRect.left + 10 + "px";
       skillDescription.style.top = event.clientY - parentRect.top + 10 + "px";
-
       skillDescription.classList.add("active-skill-description");
     }
 
@@ -54,10 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const x = event.clientX;
       const y = event.clientY;
 
-      // Update parentRect in case of scroll or resize
       parentRect = listItem.getBoundingClientRect();
-
-      // Check if mouse is inside skillButton bounds
       const btnRect = skillButton.getBoundingClientRect();
 
       if (
@@ -66,24 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
         y >= btnRect.top &&
         y <= btnRect.bottom
       ) {
-        // Mouse is inside the button
         if (!inside) {
-          // Mouse "entered"
           inside = true;
-          // Your mouseenter logic
           showDescription(event);
         } else {
-          // Mouse move inside - update position of description
           skillDescription.style.left = x - parentRect.left + 10 + "px";
           skillDescription.style.top = y - parentRect.top + 10 + "px";
         }
-      } else {
-        // Mouse is outside button
-        if (inside) {
-          // Mouse "left"
-          inside = false;
-          hideDescription();
-        }
+      } else if (inside) {
+        inside = false;
+        hideDescription();
       }
     });
   });

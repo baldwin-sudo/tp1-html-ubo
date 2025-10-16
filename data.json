@@ -1,0 +1,29 @@
+{
+    "skills": [
+        {
+            "name": "reactjs",
+            "level": 3,
+            "description": "ReactJS is a JavaScript library for building interactive user interfaces."
+        },
+        {
+            "name": "rust",
+            "level": 2,
+            "description": "Rust emphasizes safety and concurrency without sacrificing performance."
+        },
+        {
+            "name": "golang",
+            "level": 3,
+            "description": "Golang is a statically typed language designed for simplicity and performance."
+        },
+        {
+            "name": "html",
+            "level": 5,
+            "description": "HTML defines the structure and content of web pages."
+        },
+        {
+            "name": "postgresql",
+            "level": 4,
+            "description": "PostgreSQL is a powerful, open-source relational database system."
+        }
+    ]
+}
